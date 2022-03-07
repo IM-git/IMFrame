@@ -5,6 +5,7 @@ from selenium.webdriver.chrome.options import Options as OChrome
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.firefox.service import Service as SFirefox
 from selenium.webdriver.firefox.options import Options as OFirefox
+from tools.exceptions.unknown_browser import UnknownBrowser
 from selenoid import capabilities
 
 
@@ -21,7 +22,8 @@ class Factory:
         elif config['browser'] == 'firefox_selenoid':
             return Factory.firefox_browser_selenoid()
         else:
-            raise Exception(f' We are not use the "{Factory.config_browser(config)}".')
+            raise UnknownBrowser(Factory.config_browser(config))
+            # raise Exception(f' We are not use the "{Factory.config_browser(config)}".')
 
     @staticmethod
     def chrome_browser():

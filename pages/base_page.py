@@ -13,15 +13,16 @@ from tools import AllureScreenshot
 
 class BasePage:
 
-    def __init__(self):
+    def __init__(self, browser):
+        self.browser = browser
         self.base_element = BaseElement()
         self.elements = Elements()
         self.base = Base()
-        self.m_k_a = MouseKeyboardActions()
+        self.mouse_keyboard_actions = MouseKeyboardActions()
 
-    def open_page(self, browser, link):
+    def open_page(self, link):
         Logger().info(f"Open page: {link}.")
-        browser.get(link)
+        self.browser.get(link)
 
     def get_url(self, browser):
         return browser.current_url
@@ -55,5 +56,4 @@ class BasePage:
         value = self.base_element.find_element(
             browser, locator, element)
         click = self.elements.click(browser, locator, element)
-        self.m_k_a._enter_text(browser, name)
-
+        self.mouse_keyboard_actions._enter_text(browser, name)
