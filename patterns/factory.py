@@ -28,6 +28,8 @@ class Factory:
     @staticmethod
     def chrome_browser():
         option = OChrome()
+        # to supress the error messages/logs
+        option.add_experimental_option('excludeSwitches', ['enable-logging'])
         chrome_service = SChrome(ChromeDriverManager().install())
         driver = webdriver.Chrome(service=chrome_service, options=option)
         return driver
