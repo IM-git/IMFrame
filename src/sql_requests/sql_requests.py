@@ -41,4 +41,4 @@ class SQLRequestsExample:
     EXAMPLE_DELETE_TABLE = """DROP TABLE if exists users"""
 
     #   Delete login_password.db database.
-    EXAMPLE_DELETE_DATA = f"{os.remove('name_database.db')}"
+    # EXAMPLE_DELETE_DATA = f"{os.remove('name_database.db')}"
