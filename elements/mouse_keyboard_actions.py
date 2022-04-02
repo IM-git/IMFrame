@@ -2,7 +2,10 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 
+#   Note! Need to separate by two classes: keyboard and mouse.
 class MouseKeyboardActions:
+    """Here the common methods for
+    performing keyboard/mouse actions."""
 
     def _move_to_element(self, browser, element):
         return webdriver.ActionChains(browser).\

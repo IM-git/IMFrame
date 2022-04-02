@@ -9,6 +9,7 @@ CONFIG_PATH = "tests/config.json"
 
 @pytest.fixture(scope='session')
 def browser():
+    """Initialization browser driver."""
     data = ReadFile.read_file(CONFIG_PATH)
     driver = Factory().get_browser(data)
     driver.implicitly_wait(IMPLICITLY_WAIT_TIME)

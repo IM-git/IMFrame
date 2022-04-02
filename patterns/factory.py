@@ -10,9 +10,12 @@ from selenoid import capabilities
 
 
 class Factory:
+    """Pattern for creating specific
+    version browser: Google Chrome, FireFox."""
 
     @staticmethod
     def get_browser(config):
+        """Selecting the browser option based on the parameters"""
         if config['browser'] == 'chrome':
             return Factory.chrome_browser()
         elif config['browser'] == 'firefox':
@@ -27,6 +30,7 @@ class Factory:
 
     @staticmethod
     def chrome_browser():
+        """Browser option for using Google Chrome."""
         option = OChrome()
         # to supress the error messages/logs
         option.add_experimental_option('excludeSwitches', ['enable-logging'])
@@ -36,6 +40,7 @@ class Factory:
 
     @staticmethod
     def firefox_browser():
+        """Browser option for using FireFox."""
         option = OFirefox()
         firefox_service = SFirefox(GeckoDriverManager().install())
         driver = webdriver.Firefox(service=firefox_service, options=option)
@@ -43,6 +48,8 @@ class Factory:
 
     @staticmethod
     def chrome_browser_selenoid():
+        """Browser option for using Google Chrome
+        from selenoid container."""
         driver = webdriver.Remote(
             command_executor='http://localhost:4444/wd/hub',
             options=webdriver.ChromeOptions()
@@ -51,6 +58,8 @@ class Factory:
 
     @staticmethod
     def firefox_browser_selenoid():
+        """Browser option for using FireFox
+        from selenoid container."""
         driver = webdriver.Remote(
             command_executor='http://localhost:4444/wd/hub',
             options=webdriver.FirefoxOptions()
@@ -59,6 +68,8 @@ class Factory:
 
     @staticmethod
     def config_browser(config):
+        """Checking correct value browser in the config file
+        for creating browser session."""
         if 'browser' not in config:
             print('The config file does not contain "browser"')
         elif config['browser'] not in ['chrome', 'firefox']:

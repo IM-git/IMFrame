@@ -12,6 +12,8 @@ from tools import AllureScreenshot
 
 
 class BasePage:
+    """BasePage combines all main commands
+    in the common class."""
 
     def __init__(self, browser):
         self.browser = browser
@@ -20,40 +22,55 @@ class BasePage:
         self.base = Base()
         self.mouse_keyboard_actions = MouseKeyboardActions()
 
-    def open_page(self, link):
-        Logger().info(f"Open page: {link}.")
-        self.browser.get(link)
+    def open_page(self, url: str) -> None:
+        """Open a webpage.
+        Need to enter a url of the webpage.
+        Using string argument."""
+        Logger().info(f"Open page: {url}.")
+        self.browser.get(url)
 
-    def get_url(self, browser):
-        return browser.current_url
+    def get_url(self):
+        """Use for get current url."""
+        return self.browser.current_url
 
-    def get_text(self, browser, locator, element):
+    def get_text(self, locator: str, element: str):
+        """Use for get element text."""
         Logger().info(f"Get text from element: {element}.")
-        return self.elements.get_text(browser, locator, element)
+        return self.elements.get_text(self.browser, locator, element)
 
-    def wait_element_to_be_clickable(self, browser, locator, element, time=10):
+    def wait_element_to_be_clickable(self,
+                                     locator: str,
+                                     element: str,
+                                     time: int = 10):
+        """Will wait the element specified amount of time."""
         Logger().info(f"Wait element to be clickable(Element: {element}).")
-        value = self.base_element.find_element(browser, locator, element)
-        return WebDriverWait(browser, time).until(
+        value = self.base_element.find_element(self.browser, locator, element)
+        WebDriverWait(self.browser, time).until(
             EC.element_to_be_clickable(value))
 
-    def check_is_displayed(self, browser, locator, element):
+    def check_is_displayed(self, locator: str, element: str) -> bool:
+        """Wait specified time or while file will be displayed."""
         Logger().info(f"Check is displayed element: {element}.")
-        browser.implicitly_wait(self.base.TIME)
+        self.browser.implicitly_wait(self.base.TIME)
         try:
-            self.base_element.find_element(browser, locator, element).\
+            self.base_element.find_element(self.browser, locator, element).\
                 is_displayed()
         except NoSuchElementException:
             return False
         return True
 
-    def click_element(self, browser, locator, element):
+    def click_element(self, locator: str, element: str):
+        """Will be clicked the specified element."""
         Logger().info(f"Click element: {element}.")
-        return self.elements.click(browser, locator, element)
+        return self.elements.click(self.browser, locator, element)
 
-    def enter_value(self, browser, locator, element, name):
+    def enter_value(self,
+                    locator: str,
+                    element: str,
+                    name) -> None:
+        """Will be entered value in specified element."""
         Logger().info(f"Enter value(Element: {element}, name: {name}).")
-        value = self.base_element.find_element(
-            browser, locator, element)
-        click = self.elements.click(browser, locator, element)
-        self.mouse_keyboard_actions._enter_text(browser, name)
+        self.base_element.find_element(
+            self.browser, locator, element)
+        self.elements.click(self.browser, locator, element)
+        self.mouse_keyboard_actions._enter_text(self.browser, name)
