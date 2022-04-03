@@ -5,7 +5,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from elements import BaseElement
 from elements import Elements
-from elements import MouseKeyboardActions
+from elements import MouseActions
+from elements import KeyboardActions
 from src import Base
 from tools import Logger
 from tools import AllureScreenshot
@@ -20,16 +21,18 @@ class BasePage:
         self.base_element = BaseElement()
         self.elements = Elements()
         self.base = Base()
-        self.mouse_keyboard_actions = MouseKeyboardActions()
+        self.mouse_actions = MouseActions(browser)
+        self.keyboard_actions = KeyboardActions(browser)
+        # self.mouse_keyboard_actions = MouseKeyboardActions()
 
     def open_page(self, url: str) -> None:
         """Open a webpage.
-        Need to enter a url of the webpage.
+        Need to enter the url of the webpage.
         Using string argument."""
         Logger().info(f"Open page: {url}.")
         self.browser.get(url)
 
-    def get_url(self):
+    def get_url(self) -> str:
         """Use for get current url."""
         return self.browser.current_url
 
@@ -41,7 +44,7 @@ class BasePage:
     def wait_element_to_be_clickable(self,
                                      locator: str,
                                      element: str,
-                                     time: int = 10):
+                                     time: int = 10) -> None:
         """Will wait the element specified amount of time."""
         Logger().info(f"Wait element to be clickable(Element: {element}).")
         value = self.base_element.find_element(self.browser, locator, element)
@@ -59,10 +62,10 @@ class BasePage:
             return False
         return True
 
-    def click_element(self, locator: str, element: str):
+    def click_element(self, locator: str, element: str) -> None:
         """Will be clicked the specified element."""
         Logger().info(f"Click element: {element}.")
-        return self.elements.click(self.browser, locator, element)
+        self.elements.click(self.browser, locator, element)
 
     def enter_value(self,
                     locator: str,
@@ -73,4 +76,4 @@ class BasePage:
         self.base_element.find_element(
             self.browser, locator, element)
         self.elements.click(self.browser, locator, element)
-        self.mouse_keyboard_actions._enter_text(self.browser, name)
+        self.keyboard_actions._enter_text(name)
