@@ -2,12 +2,12 @@ import os
 
 
 class SQLRequests:
-    NAME_DATABASE = ""
-    CREATE_TABLE = """"""
-    INSERT_INTO_TABLE = """"""
-    VALUES = ""
-    SELECT_TABLE = """"""
-    DELETE_TABLE = """"""
+    NAME_DATABASE: str = ""
+    CREATE_TABLE: str = """"""
+    INSERT_INTO_TABLE: str = """"""
+    VALUES: str = ""
+    SELECT_TABLE: str = """"""
+    DELETE_TABLE: str = """"""
 
 
 class SQLRequestsExample:

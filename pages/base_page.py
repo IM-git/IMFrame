@@ -25,6 +25,18 @@ class BasePage:
         self.keyboard_actions = KeyboardActions(browser)
         # self.mouse_keyboard_actions = MouseKeyboardActions()
 
+    def _base_element(self):
+        """Initialize the class only when necessary."""
+        pass
+
+    def _mouse_actions(self):
+        """Initialize the class only when necessary."""
+        pass
+
+    def keyboard_actions(self):
+        """Initialize the class only when necessary."""
+        pass
+
     def open_page(self, url: str) -> None:
         """Open a webpage.
         Need to enter the url of the webpage.

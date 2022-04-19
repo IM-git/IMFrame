@@ -4,6 +4,7 @@ from sqlite3 import Error
 from src import SQLRequests
 
 
+@pytest.mark.skip
 @pytest.fixture(scope='session')
 def database():
     try:
