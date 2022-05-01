@@ -1,18 +1,16 @@
 import pytest
-from patterns import Factory
-from tools import ReadFile
 
-
-IMPLICITLY_WAIT_TIME = 10
-CONFIG_PATH = "tests/config.json"
+from tools import Browser
+from tools import DataSettings
 
 
 @pytest.fixture(scope='session')
 def browser():
     """Initialization browser driver."""
-    data = ReadFile.read_file(CONFIG_PATH)
-    driver = Factory().get_browser(data)
-    driver.implicitly_wait(IMPLICITLY_WAIT_TIME)
+
+    data = DataSettings.config_data()
+    driver = Browser.browser(data)
+    driver.implicitly_wait(data["wait_time"])
     driver.maximize_window()
     yield driver
     driver.quit()

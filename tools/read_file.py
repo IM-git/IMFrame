@@ -1,8 +1,7 @@
-from patterns.singleton import Singleton
 import json
 
 
-class ReadFile(metaclass=Singleton):
+class ReadFile:
 
     @staticmethod
     def read_file(way):

@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
+
 from elements import BaseElement
 from elements import Elements
 from elements import MouseActions
@@ -17,13 +18,19 @@ class BasePage:
     in the common class."""
 
     def __init__(self, browser):
-        self.browser = browser
+        self.browser = None
+        # self.browser = browser
+        # self.base_element = None
         self.base_element = BaseElement()
         self.elements = Elements()
         self.base = Base()
-        self.mouse_actions = MouseActions(browser)
-        self.keyboard_actions = KeyboardActions(browser)
-        # self.mouse_keyboard_actions = MouseKeyboardActions()
+        self.mouse_actions = None
+        self.keyboard_actions = None
+        # self.mouse_actions = MouseActions(browser)
+        # self.keyboard_actions = KeyboardActions(browser)
+
+    def __browser(self):
+        return
 
     def _base_element(self):
         """Initialize the class only when necessary."""
