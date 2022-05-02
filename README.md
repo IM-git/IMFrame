@@ -16,6 +16,7 @@ def test_main(self, browser):
            main_page = MainPage(browser)
 ```
 _If not add browser in MainPage: MainPage(), webdriver will still be initialized._
+
 2. **Use singleton.**\
 Creates one time the object with webdriver in conftest.py\
 Object have global access. Uses the webdriver exactly from page.

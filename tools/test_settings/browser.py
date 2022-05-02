@@ -1,6 +1,6 @@
 from patterns import Factory
 from patterns import WebDriver
-from tools.exceptions import InvalidCondition
+from tools import InvalidCondition
 
 
 class Browser:
