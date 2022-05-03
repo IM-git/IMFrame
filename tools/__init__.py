@@ -4,5 +4,6 @@ from .logs import Logger
 from .exceptions import UnknownBrowser
 from .exceptions import InvalidCondition
 from .exceptions import InvalidConditionInTest
-from .test_settings import Browser
 from .test_settings import DataSettings
+from .test_settings import WebDriver
+from .test_settings import Browser

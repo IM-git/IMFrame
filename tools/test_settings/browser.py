@@ -1,12 +1,12 @@
 from patterns import Factory
-from patterns import WebDriver
+from tools.test_settings.singleton_methods import WebDriver
 from tools import InvalidCondition
 
 
 class Browser:
 
     @staticmethod
-    def browser(data):
+    def browser_(data):
         """Two options, create webdriver with singleton
         or without one.
         Condition pointed in the SINGLETON variable."""
