@@ -7,3 +7,4 @@ from .exceptions import InvalidConditionInTest
 from .test_settings import DataSettings
 from .test_settings import WebDriver
 from .test_settings import Browser
+from tools.test_settings.checks_browser_settings import ChecksBrowserSettings

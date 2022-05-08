@@ -1,4 +1,5 @@
 import requests
+
 from src.enums.global_enums import GlobalErrorMessages
 from src.enums.list_of_status_codes import StatusCodes
 

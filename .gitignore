@@ -131,8 +131,5 @@ dmypy.json
 .idea
 debug.json
 .git
-tests/test_main.py
-src/locators/main.py
-pages/main_page.py
 allureress/
 
