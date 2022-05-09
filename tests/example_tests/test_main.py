@@ -18,6 +18,7 @@ class Test(BaseCases):
         main_page = MainPage(browser, Main.LINK)
 
         main_page.open_page()
+        main_page.check_url()
         main_page.click_link_english_version()  # pre-main page
         main_page.click_link_community_portal()
 

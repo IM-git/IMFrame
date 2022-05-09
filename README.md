@@ -65,8 +65,8 @@ Structure folders:
 │   └───sql_requests
 ├───tests
 │   └───sql_tests
-├───tools
-│   ├───exceptions
-│   ├───logs
-│   └───sql
+└───tools
+    ├───exceptions
+    ├───logs
+    └───sql
 ```

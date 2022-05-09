@@ -16,14 +16,13 @@ class MainPage(BasePage):
     def __init__(self, *args, **kwargs):
         super(MainPage, self).__init__(*args, **kwargs)
 
-        #   Displaying info about use of the singleton(yes/no)
         Logger().info(f'The use of singleton: {DATA["singleton"].lower()}.')
 
         self.mouse_actions = MouseActions(self.browser)
         self.keyboard_actions = KeyboardActions(self.browser)
 
     def click_link_english_version(self) -> None:
-        self.click_element(*Main.LINK_ENGLISH_VERSION)
+        self.elements.click(self.browser, *Main.LINK_ENGLISH_VERSION)
 
     def click_link_community_portal(self) -> None:
-        self.click_element(*Main.LINK_COMMUNITY_PORTAL)
+        self.elements.click(self.browser, *Main.LINK_COMMUNITY_PORTAL)
