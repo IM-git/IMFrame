@@ -1,6 +1,7 @@
 from patterns import Factory
+
 from tools.test_settings.singleton_methods import WebDriver
-from tools import InvalidCondition
+from tools import InvalidConfigCondition
 
 
 class Browser:
@@ -16,5 +17,5 @@ class Browser:
         elif data["singleton"].lower() == "yes":
             driver = WebDriver(data).driver     # singleton
         else:
-            raise InvalidCondition(data["singleton"])
+            raise InvalidConfigCondition(data["singleton"])
         return driver

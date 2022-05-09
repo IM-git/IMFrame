@@ -130,6 +130,6 @@ dmypy.json
 
 .idea
 debug.json
+main.py
 .git
 allureress/
-

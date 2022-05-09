@@ -7,7 +7,9 @@ from tools import Logger
 
 
 class Elements:
-
+    """
+    The methods that use find_element().
+    """
     @staticmethod
     def check_is_displayed(browser: object,
                            locator: str,
@@ -34,14 +36,14 @@ class Elements:
             browser, locator, element).click().get_attribute(attribute)
 
     @staticmethod
-    def get_text(browser: object, locator: str, element: str):
+    def get_text(browser: object, locator: str, element: str) -> str:
         """Get the text from specified element."""
         Logger().info(f"Get text from element: {element}.")
         return BaseElement.find_element(
             browser, locator, element).click().text
 
     @staticmethod
-    def wait_element_to_be_clickable(browser,
+    def wait_element_to_be_clickable(browser: object,
                                      locator: str,
                                      element: str,
                                      time: int = 10) -> None:

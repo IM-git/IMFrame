@@ -2,6 +2,7 @@ from pages import BasePage
 
 from elements import MouseActions
 from elements import KeyboardActions
+from elements import StandardActions
 
 from src.locators.example_locators.main import Main
 
@@ -18,8 +19,11 @@ class MainPage(BasePage):
 
         Logger().info(f'The use of singleton: {DATA["singleton"].lower()}.')
 
-        self.mouse_actions = MouseActions(self.browser)
         self.keyboard_actions = KeyboardActions(self.browser)
+        self.mouse_actions = MouseActions(self.browser)
+        self.standard_actions = StandardActions(self.browser,
+                                                self.keyboard_actions,
+                                                self.mouse_actions)
 
     def click_link_english_version(self) -> None:
         self.elements.click(self.browser, *Main.LINK_ENGLISH_VERSION)

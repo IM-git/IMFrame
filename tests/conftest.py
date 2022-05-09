@@ -6,8 +6,9 @@ from tools import DataSettings
 
 @pytest.fixture(scope='session')
 def browser():
-    """Initialization browser driver."""
-
+    """
+    Initialization browser driver.
+    """
     data = DataSettings.config_data()
     driver = Browser.browser_(data)
     driver.implicitly_wait(data["wait_time"])

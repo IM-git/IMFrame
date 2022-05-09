@@ -1,3 +1,3 @@
 class Base:
-    TIME = 10
-    LINK = str
+    TIME: int = 10
+    LINK: str

@@ -1,6 +1,5 @@
 from elements import Elements
 
-from src import Base
 from src import GlobalErrorMessages
 
 from tools import Logger
@@ -16,25 +15,20 @@ class BasePage:
     in the common class.
     """
 
-    def __init__(self, browser=None, url=None):
+    def __init__(self, browser: object = None, url: str = None):
 
         self.browser = ChecksBrowserSettings.checks_the_use_of_singleton(
             browser)
         self.url = url
+        self.elements = Elements()
         self.mouse_actions = None
         self.keyboard_actions = None
-        self.elements = Elements()
-        self.base = Base()
+        self.standard_actions = None
 
-    def check_url(self):
+    def check_url(self) -> None:
         """Compares that specified url with the actual url."""
+        Logger().info(f"Checks that specified url is: {self.url}.")
         assert self.url == self.get_url(), GlobalErrorMessages.WRONG_PAGE
-
-    # def enter_value(self, locator: str, element: str, name) -> None:
-    #     """Will be entered value in specified element."""
-    #     Logger().info(f"Enter value(Element: {element}, name: {name}).")
-    #     self.elements.click(self.browser, locator, element)
-    #     self.keyboard_actions._enter_text(name)
 
     def get_url(self) -> str:
         """Use for get current url."""
