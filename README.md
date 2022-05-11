@@ -21,9 +21,9 @@ _If not add browser in MainPage: MainPage(), webdriver will still be initialized
 Creates one time the object with webdriver in conftest.py\
 Object have global access. Uses the webdriver exactly from page.
 ```
-.\tests\test_main.py
+.\tests\example_tests\test_main.py
 
-from pages.main_page import MainPage
+from pages.example_pages.main_page import MainPage
 
 
 def test_main(self):
@@ -31,7 +31,7 @@ def test_main(self):
 ```
 
 ```
-.\pages\main_page.py
+.\pages\base_page.py
 
 from tools import DataSettings
 
@@ -48,7 +48,7 @@ class MainPage(BasePage):
         else:
             self.browser = browser
 ```
-In the main_page file: if browser isn't shipping from test file( is None), takes webdriver from DataSetting,
+In the base_page file: if browser isn't shipping from test file( is None), takes webdriver from DataSetting,
 else browser conducts from test file.\
 In this situation, it is compared here that the file is initialized using singleton or not.
 ___
@@ -68,5 +68,6 @@ Structure folders:
 └───tools
     ├───exceptions
     ├───logs
+    ├───test_settings
     └───sql
 ```

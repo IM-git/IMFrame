@@ -28,8 +28,8 @@ class InvalidConditionInTest(BaseExceptions):
 
     def __str__(self):
         return f"Check the correct using browser in the test.\n" \
-               f"Hint. When using singleton,\n" \
+               f"Hint. When using singleton," \
                f"in the test doesn't need paste browser in the class page.\n" \
                f"And vice versa if don't use singleton.\n" \
-               f"Example: if singleton - yes, MainPage(browser, Main.LINK);\n" \
-               f"if singleton - no, MainPage(Main.LINK);"
+               f"Example: if singleton - 'yes' => MainPage(browser, Main.LINK);\n" \
+               f"if singleton - 'no' => MainPage(Main.LINK);"
