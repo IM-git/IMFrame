@@ -7,8 +7,10 @@ from tools import Logger
 
 
 class BaseCases:
-    """These are the standard parts of the test
-    that most tests are used in."""
+    """
+    These are the standard parts of the test
+    that most tests are used in.
+    """
 
     @staticmethod
     def check_status_code(url: str,

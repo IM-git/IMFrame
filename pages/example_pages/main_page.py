@@ -26,7 +26,7 @@ class MainPage(BasePage):
                                                 self.mouse_actions)
 
     def click_link_english_version(self) -> None:
-        self.elements.click(self.browser, *Main.LINK_ENGLISH_VERSION)
+        self.elements.click(*Main.LINK_ENGLISH_VERSION)
 
     def click_link_community_portal(self) -> None:
-        self.elements.click(self.browser, *Main.LINK_COMMUNITY_PORTAL)
+        self.elements.click(*Main.LINK_COMMUNITY_PORTAL)

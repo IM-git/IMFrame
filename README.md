@@ -68,6 +68,7 @@ Structure folders:
 └───tools
     ├───exceptions
     ├───logs
+    ├───mongodb
     ├───test_settings
     └───sql
 ```

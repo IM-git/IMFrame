@@ -128,8 +128,10 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# IMFrame list of ignored files
 .idea
 debug.json
+geckodriver.log
 main.py
 .git
 allureress/
